@@ -36,7 +36,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  status:
+                  message:
                     type: string
   /rent/{id}:
     put:
@@ -59,7 +59,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  status:
+                  message:
                     type: string
   /users/login:
     post:
@@ -87,7 +87,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  status:
+                  token:
                     type: string
   /users/create:
     post:
@@ -118,7 +118,13 @@ paths:
               schema:
                 type: object
                 properties:
-                  status:
+                  id:
+                    type: number
+                  nome:
+                    type: string
+                  email:
+                    type: string
+                  senha:
                     type: string
   /users:
     get:
@@ -146,7 +152,13 @@ paths:
               schema:
                 type: object
                 properties:
-                  status:
+                  id:
+                    type: number
+                  nome:
+                    type: string
+                  email:
+                    type: string
+                  senha:
                     type: string
   /movies:
     get:
@@ -168,8 +180,16 @@ paths:
               schema:
                 type: object
                 properties:
-                  status:
+                  id:
+                    type: number
+                  nome:
                     type: string
+                  diretor:
+                    type: string
+                  descricao:
+                    type: string
+                  quantidade:
+                    type: number
   /movies/create:
     post:
       tags:
@@ -202,5 +222,13 @@ paths:
               schema:
                 type: object
                 properties:
-                  status:
+                  id:
+                    type: number
+                  nome:
                     type: string
+                  diretor:
+                    type: string
+                  descricao:
+                    type: string
+                  quantidade:
+                    type: number
