@@ -65,7 +65,7 @@ paths:
     post:
       tags:
         - Users
-      summary: Cria um usuario
+      summary: Permite o login de um usuario criado
       requestBody:
         required: true
         content:
