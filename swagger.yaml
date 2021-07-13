@@ -1,0 +1,206 @@
+openapi: '3.0.3'
+servers:
+  - url: /
+    description: localhost
+
+info:
+  description: 'Apis of a Locadora project'
+  title: 'Project Apis'
+  version: '1.0.0'
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+
+paths:
+  /return/{id}:
+    put:
+      security:
+        - BearerAuth: [ ]
+      tags:
+        - Rent
+      summary: Um usuario logado devolve um filme
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: A status message object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+  /rent/{id}:
+    put:
+      security:
+        - BearerAuth: [ ]
+      tags:
+        - Rent
+      summary: Um usuario logado aluga um filme
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A status message object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+  /users/login:
+    post:
+      tags:
+        - Users
+      summary: Cria um usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  required: true
+                senha:
+                  type: string
+                  required: true
+      responses:
+        '200':
+          description: A status message object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+  /users/create:
+    post:
+      tags:
+        - Users
+      summary: Cria um usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nome:
+                  type: string
+                  required: true
+                email:
+                  type: string
+                  required: true
+                senha:
+                  type: string
+                  required: true
+      responses:
+        '200':
+          description: A status message object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+  /users:
+    get:
+      security:
+        - BearerAuth: [ ]
+      tags:
+        - Users
+      summary: Retorna todos os usuarios ou algum com nome ou email especifico
+      parameters:
+        - in: query
+          name: email
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: nome
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A status message object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+  /movies:
+    get:
+      security:
+        - BearerAuth: [ ]
+      tags:
+        - Movies
+      summary: Retorna todos os filmes ou algum especifico
+      parameters:
+        - in: query
+          name: nome
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A status message object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+  /movies/create:
+    post:
+      tags:
+        - Movies
+      summary: Cadastra um novo filme
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nome:
+                  type: string
+                  required: true
+                diretor:
+                  type: string
+                  required: true
+                descricao:
+                  type: string
+                  required: true
+                quantidade:
+                  type: number
+                  required: true
+      responses:
+        '200':
+          description: A status message object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
